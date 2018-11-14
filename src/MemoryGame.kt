@@ -1,10 +1,12 @@
 package io.github.justinrobertson.playing.memorygame
 
 import javafx.application.Application
+import javafx.event.EventHandler
 import javafx.scene.Scene
 import javafx.scene.layout.StackPane
 import javafx.stage.Stage
 import javafx.scene.canvas.Canvas
+import javafx.scene.input.MouseEvent
 import javafx.scene.paint.Paint
 
 val SYMBOLS = "ABCDEFGH".toCharArray()
@@ -91,11 +93,19 @@ class View() : Application() {
         ctx.fillRect(0.0, 0.0, canvas.height, canvas.width)
         stage.title = "Memory"
 
+        // Add mouse listener to canvas??
+        canvas.onMouseClicked = EventHandler { click(it) }
+
+        // Add everything and paint
         root.getChildren().add(canvas)
         val scene = Scene(root, canvasSideLength, canvasSideLength)
         stage.setScene(scene)
         stage.show()
         paintCanvas(n) // where n^2 is the number of tiles
+    }
+
+    fun click(event: MouseEvent) {
+        println(event.x)
     }
 
     // Canvas accommodates n * n tiles
