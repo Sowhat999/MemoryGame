@@ -93,7 +93,7 @@ class View() : Application() {
         ctx.fillRect(0.0, 0.0, canvas.height, canvas.width)
         stage.title = "Memory"
 
-        // Add mouse listener to canvas??
+        // Add mouse listener to canvas. Seems to work...
         canvas.onMouseClicked = EventHandler { click(it) }
 
         // Add everything and paint
@@ -105,7 +105,7 @@ class View() : Application() {
     }
 
     fun click(event: MouseEvent) {
-        println(event.x)
+        println("Click coordinates (${event.x}, ${event.y}")
     }
 
     // Canvas accommodates n * n tiles
